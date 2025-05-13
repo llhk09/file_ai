@@ -1,9 +1,14 @@
---- style.css ---
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(120deg, #d1f5f0, #b2e4f5);
   color: #333;
+  transition: margin-left 0.3s ease; /* body에 transition 추가 */
+}
+
+/* 기본적으로 사이드바가 열려있다고 가정하고 메인 컨텐츠 마진 설정 */
+body.sidebar-open .container {
+    margin-left: 220px; /* 사이드바 너비만큼 메인 컨텐츠를 오른쪽으로 밀어냅니다. */
 }
 
 header.nav-bar {
@@ -13,6 +18,8 @@ header.nav-bar {
   text-align: center;
   font-size: 1.8rem;
   font-weight: bold;
+  position: relative;
+  z-index: 1;
 }
 
 .top-nav {
@@ -20,6 +27,8 @@ header.nav-bar {
   display: flex;
   justify-content: center;
   padding: 0.5rem 0;
+  position: relative;
+  z-index: 1;
 }
 
 .top-nav a {
@@ -37,15 +46,40 @@ header.nav-bar {
 .container {
   display: flex;
   min-height: 100vh;
+  /* 사이드바가 fixed이므로 margin-left로 메인 컨텐츠 위치 조정 */
+  /* margin-left는 body의 .sidebar-open 클래스로 제어됩니다. */
+  transition: margin-left 0.3s ease; /* 사이드바 토글 시 부드러운 전환 효과 */
 }
 
+/* 사이드바 스타일 */
 .sidebar {
   width: 220px;
   background-color: #003366;
   color: white;
   padding: 1rem;
   box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0; /* 항상 왼쪽에 고정 */
+  height: 100%;
+  overflow-y: auto;
+  transition: transform 0.3s ease; /* 너비 대신 transform으로 애니메이션 */
+  z-index: 999;
+  transform: translateX(0); /* 기본적으로 열려 있는 상태 */
 }
+
+/* 사이드바 닫혔을 때 스타일 */
+body.sidebar-closed .sidebar {
+  transform: translateX(-100%); /* 왼쪽으로 완전히 이동하여 숨김 */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* 사이드바가 닫혔을 때 메인 컨텐츠를 왼쪽으로 이동 */
+body.sidebar-closed .container {
+    margin-left: 0;
+}
+
 
 .sidebar img {
   width: 100%;
@@ -56,6 +90,143 @@ header.nav-bar {
 .sidebar p {
   margin: 0.5rem 0;
 }
+
+/* 사이드바 메뉴 스타일 */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+  border-bottom: 1px solid #005288;
+  padding-bottom: 1rem;
+}
+
+.sidebar-menu li {
+  margin-bottom: 10px;
+}
+
+.sidebar-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+  display: block;
+  padding: 5px 0;
+}
+
+.sidebar-menu a:hover {
+  color: #a0e4ff;
+}
+
+/* 외부 링크 관리 영역 스타일 */
+.external-links-관리 {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #005288;
+}
+
+.external-links-관리 h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+#add-link-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 1rem;
+}
+
+#add-link-form input[type="text"],
+#add-link-form input[type="url"] {
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+}
+
+#add-link-form button {
+    padding: 8px;
+    background-color: #005288;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#add-link-form button:hover {
+    background-color: #003366;
+}
+
+
+/* 동적 외부 링크 목록 스타일 */
+#external-links-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+}
+
+#external-links-list li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#external-links-list a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+  flex-grow: 1;
+  margin-right: 10px;
+  word-break: break-all; /* 긴 URL이나 텍스트가 넘치지 않도록 줄바꿈 */
+}
+
+#external-links-list a:hover {
+  color: #a0e4ff;
+}
+
+.remove-link {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 3px 8px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+    flex-shrink: 0; /* 버튼 크기가 줄어들지 않도록 */
+}
+
+.remove-link:hover {
+    background-color: #c82333;
+}
+
+
+/* 사이드바 토글 버튼 스타일 */
+.sidebar-toggle {
+  position: fixed;
+  top: 1rem;
+  /* 사이드바 상태에 따라 left 값 변경 */
+  left: 230px; /* 기본적으로 사이드바 열림 상태에 맞춰 위치 */
+  font-size: 2rem;
+  background-color: #003366;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: left 0.3s ease; /* left 속성 변화에 애니메이션 적용 */
+}
+
+/* 사이드바가 닫혔을 때 토글 버튼 위치 조정 */
+body.sidebar-closed .sidebar-toggle {
+    left: 1rem; /* 사이드바 닫혔을 때 왼쪽으로 이동 */
+}
+
 
 .main-content {
   flex-grow: 1;
@@ -70,10 +241,13 @@ h2 {
   color: #003366;
 }
 
+/* 기본 링크 스타일 (메인 컨텐츠 내 링크) */
 a {
   color: #005288;
+  text-decoration: none; /* 기본 밑줄 제거 */
 }
 
 a:hover {
   color: #003366;
+  text-decoration: underline; /* 호버 시 밑줄 표시 */
 }

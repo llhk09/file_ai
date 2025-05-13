@@ -2,11 +2,9 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>연락처 - 이현규 포트폴리오</title>
-  <link rel="stylesheet" href="style.css">
+  <title>연락처 - 이현규 포트폴리오</title> <link rel="stylesheet" href="style.css">
 </head>
-<body class="mint-bg">
-  <header class="nav-bar">이현규 홈페이지</header>
+<body class="mint-bg sidebar-open"> <header class="nav-bar">이현규 홈페이지</header>
 
   <nav class="top-nav">
     <a href="index.html">홈</a>
@@ -16,18 +14,37 @@
     <a href="contact.html">연락처</a>
   </nav>
 
+  <button id="sidebar-toggle" class="sidebar-toggle">☰</button>
+
   <div class="container">
     <aside class="sidebar nav-bar">
       <img src="images/profile.jpg" alt="프로필 사진">
       <p><strong>이현규</strong></p>
       <p>광운대학교 소프트웨어학부</p>
       <p>202112345</p>
+
+      <ul class="sidebar-menu">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="about.html">자기소개</a></li>
+        <li><a href="portfolio.html">포트폴리오</a></li>
+        <li><a href="resume.html">이력서</a></li>
+        <li><a href="contact.html">연락처</a></li>
+      </ul>
+
+      <div class="external-links-관리">
+        <h3>외부 링크 관리</h3>
+        <form id="add-link-form">
+          <input type="text" id="link-text" placeholder="링크 이름" required>
+          <input type="url" id="link-url" placeholder="URL" required>
+          <button type="submit">링크 추가</button>
+        </form>
+        <ul id="external-links-list" class="external-links">
+          </ul>
+      </div>
     </aside>
 
     <main class="main-content">
-      <h2>연락처</h2>
-      <p>이메일: example@kw.ac.kr</p>
-      <p>GitHub: <a href="https://github.com/yourid" target="_blank">github.com/yourid</a></p>
+      <h2>연락처: 010-8810-8149</h2> <p>이메일: hyeongyu0930@naver.com</p> <p>GitHub: <a href="https://github.com/yourid" target="_blank">github.com/yourid</a></p>
       <p>Notion: <a href="https://www.notion.so/yourid" target="_blank">notion.so/yourid</a></p>
     </main>
   </div>

@@ -2,11 +2,9 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>자기소개 - 이현규 포트폴리오</title>
-  <link rel="stylesheet" href="style.css">
+  <title>자기소개 - 이현규 포트폴리오</title> <link rel="stylesheet" href="style.css">
 </head>
-<body class="mint-bg">
-  <header class="nav-bar">이현규 홈페이지</header>
+<body class="mint-bg sidebar-open"> <header class="nav-bar">이현규 홈페이지</header>
 
   <nav class="top-nav">
     <a href="index.html">홈</a>
@@ -16,18 +14,37 @@
     <a href="contact.html">연락처</a>
   </nav>
 
+  <button id="sidebar-toggle" class="sidebar-toggle">☰</button>
+
   <div class="container">
     <aside class="sidebar nav-bar">
       <img src="images/profile.jpg" alt="프로필 사진">
       <p><strong>이현규</strong></p>
-      <p>광운대학교 소프트웨어학부</p>
-      <p>202112345</p>
+      <p>광운대학교 자율전공학부</p>
+      <p>2025204245</p>
+
+      <ul class="sidebar-menu">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="about.html">자기소개</a></li>
+        <li><a href="portfolio.html">포트폴리오</a></li>
+        <li><a href="resume.html">이력서</a></li>
+        <li><a href="contact.html">연락처</a></li>
+      </ul>
+
+      <div class="external-links-관리">
+        <h3>외부 링크 관리</h3>
+        <form id="add-link-form">
+          <input type="text" id="link-text" placeholder="링크 이름" required>
+          <input type="url" id="link-url" placeholder="URL" required>
+          <button type="submit">링크 추가</button>
+        </form>
+        <ul id="external-links-list" class="external-links">
+          </ul>
+      </div>
     </aside>
 
     <main class="main-content">
-      <h2>자기소개</h2>
-      <p>안녕하세요! 저는 광운대학교 소프트웨어학부에 재학 중인 이현규입니다. 인공지능과 웹 개발에 관심이 많으며, 성실하고 탐구적인 성격을 가지고 있습니다.</p>
-    </main>
+      <h2>자기소개</h2> <p>안녕하세요! 저는 광운대학교 자율전공학부에 재학 중인 이현규입니다.전공 희망은 화학공학이고, 체스와 둘레길 산책을 좋아하는 사람입니다.</p> </main>
   </div>
 
   <script src="script.js"></script>

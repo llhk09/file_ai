@@ -2,11 +2,9 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>포트폴리오 - 이현규 포트폴리오</title>
-  <link rel="stylesheet" href="style.css">
+  <title>포트폴리오 - 이현규 포트폴리오</title> <link rel="stylesheet" href="style.css">
 </head>
-<body class="mint-bg">
-  <header class="nav-bar">이현규 홈페이지</header>
+<body class="mint-bg sidebar-open"> <header class="nav-bar">이현규 홈페이지</header>
 
   <nav class="top-nav">
     <a href="index.html">홈</a>
@@ -16,22 +14,39 @@
     <a href="contact.html">연락처</a>
   </nav>
 
+  <button id="sidebar-toggle" class="sidebar-toggle">☰</button>
+
   <div class="container">
     <aside class="sidebar nav-bar">
       <img src="images/profile.jpg" alt="프로필 사진">
       <p><strong>이현규</strong></p>
-      <p>광운대학교 소프트웨어학부</p>
-      <p>202112345</p>
+      <p>광운대학교 자율전공학부</p>
+      <p>2025204245</p>
+
+      <ul class="sidebar-menu">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="about.html">자기소개</a></li>
+        <li><a href="portfolio.html">포트폴리오</a></li>
+        <li><a href="resume.html">이력서</a></li>
+        <li><a href="contact.html">연락처</a></li>
+      </ul>
+
+      <div class="external-links-관리">
+        <h3>외부 링크 관리</h3>
+        <form id="add-link-form">
+          <input type="text" id="link-text" placeholder="링크 이름" required>
+          <input type="url" id="link-url" placeholder="URL" required>
+          <button type="submit">링크 추가</button>
+        </form>
+        <ul id="external-links-list" class="external-links">
+          </ul>
+      </div>
     </aside>
 
     <main class="main-content">
-      <h2>포트폴리오</h2>
-      <ul>
-        <li>AI사무자동화 프로젝트 (2025)</li>
-        <li>교내 알고리즘 공모전 수상</li>
-        <li>웹 풀스택 스터디 활동</li>
-      </ul>
-    </main>
+      <h2>포트폴리오</h2> <ul>
+        <li>아직 프로젝트 없음</li>
+      </ul> </main>
   </div>
 
   <script src="script.js"></script>
